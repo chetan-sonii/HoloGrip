@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}404 | HoloGrip{% endblock %}
+{% block content %}
+<section class="page-hero text-center">
+    <div class="container"><div class="eyebrow">404</div><h1>Page not found</h1><a href="{{ url_for('main.index') }}" class="btn btn-primary mt-3">Back to Home</a></div>
+</section>
+{% endblock %}

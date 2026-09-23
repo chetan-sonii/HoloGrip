@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Live Demo | HoloGrip{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-page-hero">
+    <div class="container d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-4">
+        <div>
+            <div class="eyebrow">LIVE DEMONSTRATION</div>
+            <h1>Sensor dashboard</h1>
+            <p>Watch the values change without reloading the page.</p>
+        </div>
+        <div class="demo-status-badge">
+            <span id="connection-dot" class="connection-dot"></span>
+            <span id="connection-text">Connecting...</span>
+        </div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="scene-shell">
+                    <div class="scene-toolbar">
+                        <div>
+                            <div class="scene-label">ORIENTATION VISUALIZATION</div>
+                            <div class="scene-title">3D Sensor Object</div>
+                        </div>
+                        <span class="source-chip"><i class="bi bi-broadcast-pin"></i> <span id="source-value">demo</span></span>
+                    </div>
+                    <div id="scene"></div>
+                    <div class="scene-legend">
+                        <span><i class="bi bi-arrow-up"></i> Pitch</span>
+                        <span><i class="bi bi-arrow-left-right"></i> Roll</span>
+                        <span><i class="bi bi-arrow-repeat"></i> Yaw</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="row g-3">
+                    <div class="col-sm-4 col-xl-12"><div class="live-metric"><span>ROLL</span><strong id="roll-value">--</strong><small>degrees</small></div></div>
+                    <div class="col-sm-4 col-xl-12"><div class="live-metric"><span>PITCH</span><strong id="pitch-value">--</strong><small>degrees</small></div></div>
+                    <div class="col-sm-4 col-xl-12"><div class="live-metric"><span>YAW</span><strong id="yaw-value">--</strong><small>degrees</small></div></div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6 col-xl-12">
+                        <div class="data-card">
+                            <div class="data-card-heading"><span>ACCELEROMETER</span><i class="bi bi-graph-up"></i></div>
+                            <div class="axis-row"><span>X</span><strong id="accel-x">--</strong><span>g</span></div>
+                            <div class="axis-row"><span>Y</span><strong id="accel-y">--</strong><span>g</span></div>
+                            <div class="axis-row"><span>Z</span><strong id="accel-z">--</strong><span>g</span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-12">
+                        <div class="data-card">
+                            <div class="data-card-heading"><span>GYROSCOPE</span><i class="bi bi-arrow-repeat"></i></div>
+                            <div class="axis-row"><span>X</span><strong id="HoloGrip">--</strong><span>°/s</span></div>
+                            <div class="axis-row"><span>Y</span><strong id="gyro-y">--</strong><span>°/s</span></div>
+                            <div class="axis-row"><span>Z</span><strong id="gyro-z">--</strong><span>°/s</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-3">
+                    <div class="data-card-heading"><span>DEVICE</span><i class="bi bi-thermometer-half"></i></div>
+                    <div class="device-line"><span>Temperature</span><strong id="temperature-value">--</strong></div>
+                    <div class="device-line"><span>Last update</span><strong id="timestamp-value">Waiting...</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.min.js"></script>
+<script src="{{ url_for('static', filename='js/orientation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sensor.js') }}"></script>
+{% endblock %}

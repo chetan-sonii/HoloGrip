@@ -1,0 +1,579 @@
+{% extends "base.html" %}
+
+{% block title %}Project | HoloGrip{% endblock %}
+
+{% block extra_css %}
+<style>
+    .project-hero {
+        padding: 90px 0 75px;
+        background: #ffffff;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .project-hero h1 {
+        max-width: 850px;
+        line-height: 1.1;
+    }
+
+    .project-intro {
+        max-width: 760px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .section-space {
+        padding: 85px 0;
+    }
+
+    .section-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--primary);
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .problem-card,
+    .solution-card {
+        height: 100%;
+        padding: 32px;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        background: #fff;
+    }
+
+    .problem-card {
+        background: #fafafa;
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 22px;
+        border-radius: 14px;
+        background: rgba(37, 99, 235, .09);
+        color: var(--primary);
+        font-size: 1.35rem;
+    }
+
+    .problem-card .card-icon {
+        background: #f1f3f5;
+        color: #495057;
+    }
+
+    .problem-card h2,
+    .solution-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .problem-card p,
+    .solution-card p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    .objective-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .objective-list li {
+        display: flex;
+        gap: 15px;
+        padding: 16px 0;
+        border-bottom: 1px solid #e9ecef;
+        color: #374151;
+    }
+
+    .objective-list li:last-child {
+        border-bottom: 0;
+    }
+
+    .objective-list i {
+        color: var(--primary);
+        margin-top: 3px;
+    }
+
+    .feature-card {
+        height: 100%;
+        padding: 28px;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        background: #fff;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 35px rgba(15, 23, 42, .07);
+    }
+
+    .feature-number {
+        color: #adb5bd;
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+    }
+
+    .feature-card i {
+        display: block;
+        margin: 18px 0;
+        color: var(--primary);
+        font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .feature-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .process-section {
+        background: #f8fafc;
+    }
+
+    .process-step {
+        position: relative;
+        height: 100%;
+        padding: 28px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+    }
+
+    .process-step .number {
+        display: inline-grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        margin-bottom: 18px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: #fff;
+        font-size: .8rem;
+        font-weight: 700;
+    }
+
+    .process-step h3 {
+        font-size: 1.1rem;
+    }
+
+    .process-step p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .application-box {
+        padding: 40px;
+        border-radius: 24px;
+        background: var(--navy);
+        color: #fff;
+    }
+
+    .application-box p {
+        max-width: 720px;
+        color: rgba(255,255,255,.68);
+        line-height: 1.8;
+    }
+
+    .application-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .application-tags span {
+        padding: 8px 13px;
+        border: 1px solid rgba(255,255,255,.15);
+        border-radius: 50px;
+        color: rgba(255,255,255,.82);
+        font-size: .85rem;
+    }
+
+    @media (max-width: 768px) {
+        .project-hero {
+            padding: 65px 0 55px;
+        }
+
+        .section-space {
+            padding: 65px 0;
+        }
+
+        .application-box {
+            padding: 30px;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Project Hero -->
+<section class="project-hero">
+    <div class="container">
+        <span class="section-label">Project Overview</span>
+
+        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">
+            Turning physical movement into
+            <span class="accent-text">digital interaction.</span>
+        </h1>
+
+        <p class="project-intro text-secondary animate__animated animate__fadeInUp animate__delay-1s">
+            HoloGrip is an embedded-system project that uses an MPU6050
+            motion sensor and an ESP32 microcontroller to capture the
+            movement and orientation of a handheld device and translate
+            that physical motion into digital interaction.
+        </p>
+    </div>
+</section>
+
+
+<!-- Problem & Solution -->
+<section class="section-space">
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-6">
+                <div class="problem-card">
+                    <div class="card-icon">
+                        <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+
+                    <h2>The Problem</h2>
+
+                    <p>
+                        Traditional computer input methods such as keyboards
+                        and mice are designed around buttons, keys and
+                        two-dimensional pointer movement. They do not directly
+                        represent the physical orientation or movement of a
+                        handheld object.
+                    </p>
+
+                    <p class="mt-3">
+                        This creates an opportunity to explore a more
+                        natural interaction method based on physical motion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="solution-card">
+                    <div class="card-icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+
+                    <h2>Our Solution</h2>
+
+                    <p>
+                        HoloGrip combines an MPU6050 inertial measurement unit
+                        with an ESP32 to detect movement-related data.
+                    </p>
+
+                    <p class="mt-3">
+                        The ESP32 acquires the sensor information and makes
+                        it available to the software layer, where the data
+                        can be processed and used for interactive digital
+                        applications.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Objectives -->
+<section class="section-space bg-light-subtle">
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-5">
+                <span class="section-label">Project Objectives</span>
+
+                <h2 class="fw-bold display-6">
+                    What we aim to demonstrate
+                </h2>
+
+                <p class="text-secondary mt-3">
+                    The project brings together embedded hardware,
+                    sensor communication and software development into
+                    one practical system.
+                </p>
+            </div>
+
+            <div class="col-lg-7">
+                <ul class="objective-list">
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Capture motion data using an MPU6050 sensor.</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Interface the sensor with an ESP32 using I²C communication.</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Transmit and process the acquired sensor data.</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Convert physical movement into meaningful digital information.</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Demonstrate how embedded systems can be integrated with modern web technologies.</span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Key Features -->
+<section class="section-space">
+    <div class="container">
+
+        <div class="text-center mx-auto" style="max-width: 700px;">
+            <span class="section-label">Key Features</span>
+
+            <h2 class="fw-bold display-6">
+                What makes the project work
+            </h2>
+
+            <p class="text-secondary mt-3">
+                Each component has a specific role in transforming
+                physical movement into usable digital data.
+            </p>
+        </div>
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">01</span>
+                    <i class="bi bi-speedometer2"></i>
+
+                    <h3>Motion Sensing</h3>
+
+                    <p>
+                        The MPU6050 combines an accelerometer and gyroscope
+                        to measure movement and angular motion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">02</span>
+                    <i class="bi bi-cpu"></i>
+
+                    <h3>ESP32 Processing</h3>
+
+                    <p>
+                        The ESP32 acts as the central microcontroller,
+                        reading sensor data and handling communication.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">03</span>
+                    <i class="bi bi-arrow-left-right"></i>
+
+                    <h3>I²C Communication</h3>
+
+                    <p>
+                        A simple two-wire I²C interface is used to
+                        communicate between the ESP32 and MPU6050.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">04</span>
+                    <i class="bi bi-database"></i>
+
+                    <h3>Data Processing</h3>
+
+                    <p>
+                        Raw sensor measurements can be processed and
+                        converted into useful orientation information.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">05</span>
+                    <i class="bi bi-code-slash"></i>
+
+                    <h3>Software Integration</h3>
+
+                    <p>
+                        The hardware system is connected with software
+                        components to demonstrate end-to-end data flow.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <span class="feature-number">06</span>
+                    <i class="bi bi-boxes"></i>
+
+                    <h3>Interactive Applications</h3>
+
+                    <p>
+                        Motion data can be used as an input mechanism for
+                        applications involving objects, interfaces and games.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- How It Works -->
+<section class="section-space process-section">
+    <div class="container">
+
+        <div class="mb-5">
+            <span class="section-label">System Concept</span>
+
+            <h2 class="fw-bold display-6">
+                How the project works
+            </h2>
+
+            <p class="text-secondary mt-3">
+                The complete system can be understood as a sequence
+                of five stages.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg">
+                <div class="process-step">
+                    <span class="number">01</span>
+                    <h3>Sense</h3>
+                    <p>
+                        MPU6050 detects acceleration and angular motion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg">
+                <div class="process-step">
+                    <span class="number">02</span>
+                    <h3>Read</h3>
+                    <p>
+                        ESP32 reads the sensor values through I²C.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg">
+                <div class="process-step">
+                    <span class="number">03</span>
+                    <h3>Process</h3>
+                    <p>
+                        Sensor measurements are processed into useful data.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg">
+                <div class="process-step">
+                    <span class="number">04</span>
+                    <h3>Transmit</h3>
+                    <p>
+                        The processed information is transferred to the
+                        software layer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg">
+                <div class="process-step">
+                    <span class="number">05</span>
+                    <h3>Interact</h3>
+                    <p>
+                        The resulting data can control or represent
+                        movement in a digital application.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Applications -->
+<section class="section-space">
+    <div class="container">
+
+        <div class="application-box">
+
+            <span class="section-label text-white-50">
+                Potential Applications
+            </span>
+
+            <h2 class="display-6 fw-bold mt-2">
+                Where motion-based interaction can be used
+            </h2>
+
+            <p class="mt-3">
+                The same concept can be extended beyond this project.
+                Motion sensors can provide an additional input method
+                for interactive software and physical computing systems.
+            </p>
+
+            <div class="application-tags">
+                <span>3D Object Control</span>
+                <span>Interactive Interfaces</span>
+                <span>Gaming</span>
+                <span>Robotics</span>
+                <span>Virtual Reality</span>
+                <span>Human–Computer Interaction</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

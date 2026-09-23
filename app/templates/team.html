@@ -1,0 +1,504 @@
+{% extends "base.html" %}
+
+{% block title %}Team | HoloGrip{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .team-hero {
+        padding: 90px 0 70px;
+        background: #ffffff;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .team-hero-content {
+        max-width: 760px;
+    }
+
+    .section-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--primary);
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .team-hero p {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.8;
+    }
+
+
+    .team-section {
+        padding: 90px 0;
+    }
+
+
+    .member-card {
+        height: 100%;
+        padding: 30px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 22px;
+        text-align: center;
+        transition:
+            transform .2s ease,
+            box-shadow .2s ease;
+    }
+
+    .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(15, 23, 42, .08);
+    }
+
+
+    .member-photo {
+        width: 125px;
+        height: 125px;
+        margin: 0 auto 24px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 50%;
+
+        background:
+            linear-gradient(
+                145deg,
+                #eef2ff,
+                #e2e8f0
+            );
+
+        color: #64748b;
+
+        font-size: 3.3rem;
+
+        overflow: hidden;
+    }
+
+    .member-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    .member-card h2 {
+        font-size: 1.25rem;
+        margin-bottom: 6px;
+    }
+
+
+    .member-role {
+        color: var(--primary);
+        font-size: .85rem;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+
+
+    .member-description {
+        color: var(--muted);
+        font-size: .92rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+
+    .member-socials {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .member-socials a {
+        width: 36px;
+        height: 36px;
+
+        display: grid;
+        place-items: center;
+
+        border: 1px solid #e5e7eb;
+        border-radius: 50%;
+
+        color: #64748b;
+        text-decoration: none;
+
+        transition:
+            color .2s ease,
+            background .2s ease,
+            border-color .2s ease;
+    }
+
+    .member-socials a:hover {
+        color: #ffffff;
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+
+    .team-contribution {
+        padding: 70px 0;
+        background: #f8fafc;
+    }
+
+
+    .contribution-card {
+        height: 100%;
+        padding: 28px;
+
+        background: #ffffff;
+
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+    }
+
+
+    .contribution-icon {
+        width: 44px;
+        height: 44px;
+
+        display: grid;
+        place-items: center;
+
+        margin-bottom: 18px;
+
+        border-radius: 12px;
+
+        background: rgba(37, 99, 235, .08);
+        color: var(--primary);
+
+        font-size: 1.2rem;
+    }
+
+
+    .contribution-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+
+    .contribution-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    @media (max-width: 768px) {
+
+        .team-hero {
+            padding: 65px 0 55px;
+        }
+
+        .team-section {
+            padding: 65px 0;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- Team Hero -->
+
+<section class="team-hero">
+
+    <div class="container">
+
+        <div class="team-hero-content">
+
+            <span class="section-label">
+                Our Team
+            </span>
+
+            <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">
+                The people behind
+                <span class="accent-text">HoloGrip.</span>
+            </h1>
+
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                HoloGrip is a collaborative project combining embedded
+                systems, programming, web development and technical
+                presentation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Team Members -->
+
+<section class="team-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                Team Members
+            </span>
+
+            <h2 class="fw-bold">
+                Meet our team
+            </h2>
+
+            <p class="text-secondary mt-2">
+                Each member contributes to a different part of the project.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+
+            <!-- Member 1 -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="member-card">
+
+                    <div class="member-photo">
+                        <i class="bi bi-person"></i>
+
+                        <!--
+                        Replace the icon with a photo when available:
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='images/team/member1.jpg'
+                            ) }}"
+                            alt="Member Name">
+                        -->
+                    </div>
+
+                    <h2>Ansh</h2>
+
+                    <div class="member-role">
+                        Website Developer
+                    </div>
+
+                    <p class="member-description">
+                        Created this Amazing Website to Aware People About Our Project
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Member 2 -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="member-card">
+
+                    <div class="member-photo">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h2>Prakriti</h2>
+
+                    <div class="member-role">
+                        Project Co-Ordinator
+                    </div>
+
+                    <p class="member-description">
+                        Responsible for the Flow of the Completion of The Project
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Member 3 -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="member-card">
+
+                    <div class="member-photo">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h2>Chetan</h2>
+
+                    <div class="member-role">
+                        Project Director
+                    </div>
+
+                    <p class="member-description">
+                        Implemented the Software Part of the Project
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Member 4 -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="member-card">
+
+                    <div class="member-photo">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h2>Gaurav</h2>
+
+                    <div class="member-role">
+                        Hardware Designer
+                    </div>
+
+                    <p class="member-description">
+                         Implemented the Hardware Part of the Project
+                    </p>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Contributions -->
+
+<section class="team-contribution">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                Collaboration
+            </span>
+
+            <h2 class="fw-bold">
+                Project contributions
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="contribution-card">
+
+                    <div class="contribution-icon">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+
+                    <h3>Hardware</h3>
+
+                    <p>
+                        Sensor selection, circuit connections,
+                        ESP32 programming and hardware testing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="contribution-card">
+
+                    <div class="contribution-icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h3>Software</h3>
+
+                    <p>
+                        Backend development, sensor data processing,
+                        APIs and application integration.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="contribution-card">
+
+                    <div class="contribution-icon">
+                        <i class="bi bi-window"></i>
+                    </div>
+
+                    <h3>Web Development</h3>
+
+                    <p>
+                        Website design, responsive interfaces,
+                        documentation and project visualization.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="contribution-card">
+
+                    <div class="contribution-icon">
+                        <i class="bi bi-easel"></i>
+                    </div>
+
+                    <h3>Presentation</h3>
+
+                    <p>
+                        Technical diagrams, project explanation,
+                        documentation and evaluation presentation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

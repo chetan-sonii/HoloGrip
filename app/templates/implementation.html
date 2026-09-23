@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block title %}Implementation | HoloGrip{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <div class="eyebrow">TECHNICAL IMPLEMENTATION</div>
+        <h1>How the complete system works</h1>
+        <p>Hardware acquisition, data flow, backend API and browser visualization.</p>
+    </div>
+</section>
+
+<section class="section-pad" id="technology-stack">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <div class="eyebrow">SYSTEM PIPELINE</div>
+            <h2>Seven stages from movement to visualization</h2>
+        </div>
+
+        <div class="implementation-grid mt-5">
+            {% for step in implementation_steps %}
+            <div class="implementation-card reveal">
+                <span class="step-number">{{ step[0] }}</span>
+                <div class="step-icon">
+                    {% if loop.index == 1 %}<i class="bi bi-speedometer2"></i>
+                    {% elif loop.index == 2 %}<i class="bi bi-cpu"></i>
+                    {% elif loop.index == 3 %}<i class="bi bi-send"></i>
+                    {% elif loop.index == 4 %}<i class="bi bi-sliders"></i>
+                    {% elif loop.index == 5 %}<i class="bi bi-server"></i>
+                    {% elif loop.index == 6 %}<i class="bi bi-arrow-repeat"></i>
+                    {% else %}<i class="bi bi-box"></i>{% endif %}
+                </div>
+                <h3>{{ step[1] }}</h3>
+                <p>{{ step[2] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-pad section-muted" id="data-flow">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <div class="eyebrow">DATA FLOW DIAGRAM</div>
+            <h2>How sensor data travels through the system</h2>
+            <p>This diagram is intentionally aligned with the actual software architecture.</p>
+        </div>
+
+        <div class="flow-diagram reveal mt-5">
+            <div class="flow-node">
+                <div class="flow-node-icon"><i class="bi bi-speedometer2"></i></div>
+                <strong>MPU6050</strong>
+                <span>Sensor</span>
+            </div>
+            <div class="flow-edge"><span>I²C</span><i class="bi bi-arrow-right"></i></div>
+            <div class="flow-node">
+                <div class="flow-node-icon"><i class="bi bi-cpu"></i></div>
+                <strong>ESP32</strong>
+                <span>Acquisition</span>
+            </div>
+            <div class="flow-edge"><span>Data</span><i class="bi bi-arrow-right"></i></div>
+            <div class="flow-node">
+                <div class="flow-node-icon"><i class="bi bi-server"></i></div>
+                <strong>Flask API</strong>
+                <span>Backend</span>
+            </div>
+            <div class="flow-edge"><span>JSON</span><i class="bi bi-arrow-right"></i></div>
+            <div class="flow-node">
+                <div class="flow-node-icon"><i class="bi bi-filetype-js"></i></div>
+                <strong>AJAX</strong>
+                <span>Browser</span>
+            </div>
+            <div class="flow-edge"><span>Update</span><i class="bi bi-arrow-right"></i></div>
+            <div class="flow-node">
+                <div class="flow-node-icon"><i class="bi bi-box"></i></div>
+                <strong>3D UI</strong>
+                <span>Visualization</span>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-5">
+            <div class="col-lg-4 reveal">
+                <div class="architecture-card h-100">
+                    <div class="eyebrow">HARDWARE LAYER</div>
+                    <h3>MPU6050 + ESP32</h3>
+                    <p>
+                        The MPU6050 provides accelerometer and gyroscope measurements.
+                        The ESP32 communicates with the sensor over I²C and acts as the embedded controller.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 reveal">
+                <div class="architecture-card h-100">
+                    <div class="eyebrow">BACKEND LAYER</div>
+                    <h3>Flask + REST API</h3>
+                    <p>
+                        Flask keeps page routes separate from API routes and service logic.
+                        The API returns a structured sensor snapshot as JSON.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 reveal">
+                <div class="architecture-card h-100">
+                    <div class="eyebrow">PRESENTATION LAYER</div>
+                    <h3>JavaScript + AJAX + 3D</h3>
+                    <p>
+                        Fetch requests retrieve current values, the DOM is updated in place,
+                        and the 3D scene can respond to orientation changes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="container">
+        <div class="section-heading reveal">
+            <div class="eyebrow">TECHNOLOGY STACK</div>
+            <h2>Technologies used</h2>
+            <p>These components form the current project stack and can be expanded as the hardware integration progresses.</p>
+        </div>
+
+        <div class="row g-4 mt-3">
+            {% for category, name, description, icon in technologies %}
+            <div class="col-md-6 col-xl-4 reveal">
+                <div class="tech-card h-100">
+                    <div class="d-flex gap-3 align-items-start">
+                        <div class="tech-card-icon"><i class="bi {{ icon }}"></i></div>
+                        <div>
+                            <div class="tech-category">{{ category }}</div>
+                            <h3>{{ name }}</h3>
+                            <p>{{ description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
