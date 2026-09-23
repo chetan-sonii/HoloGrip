@@ -11,7 +11,7 @@ PROJECT = {
         "This creates an opportunity to explore motion as a direct input method."
     ),
     "youtube_url": "https://youtube.com/shorts/zf-vR_R6oDQ?si=NHeCUxck_l5Kujs4",
-    "github_url": "https://github.com/chetan-sonii/HoloGrip.git",
+    "github_url": "https://github.com/chetan-sonii/HoloGripPy.git",
     "solution": (
         "HoloGrip combines an MPU6050 inertial sensor with an ESP32. The sensor measures "
         "acceleration and angular velocity, the ESP32 acquires the readings, and the software "
